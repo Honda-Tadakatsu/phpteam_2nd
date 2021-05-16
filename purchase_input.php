@@ -22,10 +22,9 @@
 	
 	<p>名前:<?= $_SESSION['customer']['name']?></p>
 	<p>住所:<?= $_SESSION['customer']['address']?></p>
-	<hr>
+	<hr>	
+
 	<?php require 'cart_.php'; ?>
-	<hr>
-	<p>内容をご確認いただき、購入を確定してください。</p>
 
 	<?php
 	}

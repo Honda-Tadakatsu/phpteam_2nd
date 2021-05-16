@@ -17,7 +17,7 @@
     カートから商品を削除しました。
     <hr>
     <?php
-    require 'cart.php';
+    require 'cart_.php';
     ?>
 </body>
 
