@@ -12,6 +12,10 @@
     <!-- ログイン履歴 -->
     <?php require 'menu.php'; ?>
 
+    <div>
+        <h1>購入履歴</h1>
+    </div>
+
     <?php
     //ログインの確認
     if (isset($_SESSION['customer'])) {
@@ -42,7 +46,7 @@
                     'name' => $row['name'],
                     'product_id' => $row['product_id'],
                     'price' => $row['price'],
-                    'subtotal' => $row['price'] ,
+                    'subtotal' => $row['price'],
                 ];
             }
         }
@@ -63,9 +67,10 @@
                         <td>日付いれる</td>
                         <td><a href="detail.php?id=<?= $listVal['product_id'] ?>"><?= $listVal['name'] ?></a></td>
                         <td>￥<?= $listVal['subtotal'] ?></td>
-                    <?php $total += $listVal['subtotal']; endforeach; ?>
+                    <?php $total += $listVal['subtotal'];
+                endforeach; ?>
                     <tr>
-                        
+
                         <th>合計金額</th>
                         <th></th>
                         <td>￥<?= $total ?></td>

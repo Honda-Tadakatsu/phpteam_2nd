@@ -23,10 +23,10 @@
 	<p>名前:<?= $_SESSION['customer']['name']?></p>
 	<p>住所:<?= $_SESSION['customer']['address']?></p>
 	<hr>
-	<?php require 'cart.php'; ?>
+	<?php require 'cart_.php'; ?>
 	<hr>
 	<p>内容をご確認いただき、購入を確定してください。</p>
-	<a href="purchase_output.php">購入を確定する</a>
+
 	<?php
 	}
 	?>

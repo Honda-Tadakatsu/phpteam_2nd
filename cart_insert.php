@@ -17,6 +17,9 @@
 	if (!isset($_SESSION['product'])) {
 		$_SESSION['product'] = [];
 	}
+	$count = 1;
+
+
 	$_SESSION['product'][$id] = [
 		'name' => $_REQUEST['name'],
 		'price' => $_REQUEST['price'],
@@ -26,7 +29,7 @@
 	<p>カートに商品を追加しました。</p>
 	<hr>
 	<?php
-	require 'cart.php';
+	require 'cart_.php';
 	?>
 </body>
 

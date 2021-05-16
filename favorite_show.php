@@ -11,6 +11,11 @@
 <body>
 
     <?php require 'menu.php'; ?>
+
+    <div>
+        <h1>お気に入り</h1>
+    </div>
+    
     <?php
     require 'favorite.php';
     ?>

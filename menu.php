@@ -1,6 +1,6 @@
 <a href="product.php">商品</a>
 <a href="favorite_show.php">お気に入り</a>
-<a href="history.php">購入履歴</a>
+<a href="history_.php">購入履歴</a>
 <a href="cart_show.php">カート</a>
 <a href="purchase_input.php">購入</a>
 <?php //ログイン後は表示されないように処理

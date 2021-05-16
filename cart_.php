@@ -11,7 +11,7 @@ if (!empty($_SESSION['product'])) {
                 <dt><a href="detail.php?id=<?= $id ?>"><?= $product['name'] ?></a></dt>
                 <dt>￥<?= $product['price'] ?></dt>
                 <?php
-                $subtotal = $product['price'];
+                $subtotal = $product['price'] ;
                 $total += $subtotal;
                 ?>
 
@@ -27,7 +27,7 @@ if (!empty($_SESSION['product'])) {
     </div>
 
     <input type="button" onclick="location.href=''" value="戻る">
-    <input type="button" onclick="location.href='purchase_input.php'" value="注文確認">
+    <input type="button" onclick="location.href='purchase_output.php'" value="注文確認">
     </div>
 <?php
 } else {

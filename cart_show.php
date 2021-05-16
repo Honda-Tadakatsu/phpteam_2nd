@@ -11,7 +11,18 @@
 <body>
     <?php require 'menu.php'; ?>
 
-    <?php require 'cart_.php'; ?>
+    <div class="main">
+        <div class="titl">
+            <h1>カート</h1>
+        </div>
+
+        <div>
+            <?php require 'cart_.php'; ?>
+        </div>
+        
+    </div>
+
+    
 </body>
 
 </html>

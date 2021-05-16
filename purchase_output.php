@@ -33,7 +33,7 @@
 			//プリペアードステートメントに値をバインドする
 			$stm->bindValue(':purchase_id',$purchase_id, PDO::PARAM_INT);
 			$stm->bindValue(':product_id',$product_id, PDO::PARAM_INT);
-			$stm->bindValue(':count',$product['count'], PDO::PARAM_INT);
+			$stm->bindValue(':count',1, PDO::PARAM_INT);
 			//SQL文を実行
 			$stm -> execute();
 		}
