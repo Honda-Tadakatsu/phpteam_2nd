@@ -2,15 +2,15 @@
 
 <?php
 	//customerセッション変数を破棄
-	unset($_SESSION['customer']);
+	unset($_SESSION['user']);
 	//MySQLデータベースに接続する
 	require 'db_connect.php';
 	//SQL文を作る（プレースホルダを使った式）
-	$sql = "select * from customer where login = :login and password = :password";
+	$sql = "select * from user where mail = :mail and password = :password";
 	//プリペアードステートメントを作る
 	$stm = $pdo->prepare($sql);
 	//プリペアードステートメントに値をバインドする
-	$stm->bindValue(':login',$_POST['login'],PDO::PARAM_STR);
+	$stm->bindValue(':mail',$_POST['mail'],PDO::PARAM_STR);
 	$stm->bindValue(':password',$_POST['password'],PDO::PARAM_STR);
 	//SQL文を実行する
 	$stm->execute();
@@ -18,9 +18,9 @@
 	$result = $stm->fetchAll(PDO::FETCH_ASSOC);
 	//customerセッションの設定
 	foreach ($result as $row) {
-		$_SESSION['customer'] = [
+		$_SESSION['user'] = [
 			'id' => $row['id'], 'name' => $row['name'],
-			'address' => $row['address'], 'login' => $row['login'],
+			'mail' => $row['mail'], 
 			'password' => $row['password']
 		];
 	}
@@ -37,10 +37,10 @@
 <body>
 	<?php
 	require 'menu.php';
-	if (isset($_SESSION['customer'])) {
-		echo 'いらっしゃいませ、', $_SESSION['customer']['name'], 'さん。';
+	if (isset($_SESSION['user'])) {
+		echo 'ようこそ', $_SESSION['user']['name'], 'さん。';
 	} else {
-		echo 'ログイン名またはパスワードが違います。';
+		echo 'メールアドレスまたはパスワードが違います。';
 	}
 	?>
 </body>

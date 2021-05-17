@@ -16,28 +16,28 @@
 		$purchase_id = $row['max(id)'] + 1;
 	}
 	//SQL文を作る
-	$sql = "insert into purchase values(:id,:customer_id)";
+	$sql = "insert into purchase values(:id,:book_num)";
 	//プリペアードステートメントを作る
 	$stm = $pdo->prepare($sql);
 	//プリペアードステートメントに値をバインドする
 	$stm -> bindValue(':id',$purchase_id, PDO::PARAM_INT);
-	$stm -> bindValue(':customer_id', $_SESSION['customer']['id'],PDO::PARAM_INT);
+	$stm -> bindValue(':user_id', $_SESSION['user']['id'],PDO::PARAM_INT);
 	if($stm -> execute()){	
 		//SQL成功
 		//セッションに入っている商品の数だけpurchase_detailに保存
-		foreach($_SESSION['product'] as $product_id => $product){
+		foreach($_SESSION['book'] as $product_id => $book){
 			//SQL文
-			$sql = "insert into purchase_detail values(:purchase_id,:product_id,:count)";
+			$sql = "insert into purchase_detail values(:purchase_id,:book_num,:count)";
 			//プリペアードステートメントを作る
 			$stm = $pdo -> prepare($sql);
 			//プリペアードステートメントに値をバインドする
 			$stm->bindValue(':purchase_id',$purchase_id, PDO::PARAM_INT);
-			$stm->bindValue(':product_id',$product_id, PDO::PARAM_INT);
+			$stm->bindValue(':book_num',$book_num, PDO::PARAM_INT);
 			$stm->bindValue(':count',1, PDO::PARAM_INT);
 			//SQL文を実行
 			$stm -> execute();
 		}
-		unset($_SESSION['product']);
+		unset($_SESSION['book']);
 		print '購入手続きが完了しました。ありがとうございます。';
 	}else{
 		//SQL失敗

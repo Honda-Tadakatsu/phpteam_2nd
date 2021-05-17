@@ -3,7 +3,7 @@
   $user = 'root';
   $password = '';
   // 利用するデータベース
-  $dbName = 'hoge';
+  $dbName = 'bookstore';
   // MySQLサーバ
   $host = 'localhost';
   // MySQLのDSN文字列

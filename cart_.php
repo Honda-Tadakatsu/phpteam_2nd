@@ -1,21 +1,21 @@
 <?php
-if (!empty($_SESSION['product'])) {
+if (!empty($_SESSION['book'])) {
 ?>
     <?php
     $total = 0;
-    foreach ($_SESSION['product'] as $id => $product) {
+    foreach ($_SESSION['book'] as $id => $book) {
     ?>
     <div class="content_list">
         <dl>
             <div class="content_inner">
             <img src="" alt="">
                 <div class="name" >
-                    <dt><a href="detail.php?id=<?= $id ?>"><?= $product['name'] ?></a></dt>
+                    <dt><a href="detail.php?id=<?= $id ?>"><?= $book['name'] ?></a></dt>
                 </div>
                 <div class="price">
-                    <dt>￥<?= $product['price'] ?></dt>
+                    <dt>￥<?= $book['price'] ?></dt>
                     <?php
-                    $subtotal = $product['price'];
+                    $subtotal = $book['price'];
                     $total += $subtotal;
                     ?>
                 </div>

@@ -13,14 +13,14 @@
 	<?php require 'menu.php'; ?>
 
 	<?php
-	$id = $_REQUEST['id'];
-	if (!isset($_SESSION['product'])) {
-		$_SESSION['product'] = [];
+	$id = $_REQUEST['num'];
+	if (!isset($_SESSION['book'])) {
+		$_SESSION['book'] = [];
 	}
 	$count = 1;
 
 
-	$_SESSION['product'][$id] = [
+	$_SESSION['book'][$id] = [
 		'name' => $_REQUEST['name'],
 		'price' => $_REQUEST['price'],
 	];

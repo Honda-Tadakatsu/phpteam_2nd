@@ -15,7 +15,7 @@
 	//MySQLデータベースに接続する
 	require 'db_connect.php';
 	//SQL文を作る（プレースホルダを使った式）
-	$sql = "select * from product where id = :id";
+	$sql = "select * from user where mail = :mail and password = :password";
 	//プリペアードステートメントを作る
 	$stm = $pdo->prepare($sql);
 	//プリペアードステートメントに値をバインドする

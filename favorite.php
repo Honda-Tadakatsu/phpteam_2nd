@@ -1,16 +1,16 @@
 <?php
-if (isset($_SESSION['customer'])) {
+if (isset($_SESSION['user'])) {
 ?>
 
 	<?php
 	//MySQLデータベースに接続する
 	require 'db_connect.php';
 	//SQL文を作る（プレースホルダを使った式）
-	$sql = "select * from favorite, product where customer_id = :customer_id and product_id = id";
+	$sql = "select * from favorite, book where user_num = :user_num and book_num = book_num";
 	//プリペアードステートメントを作る
 	$stm = $pdo->prepare($sql);
 	//プリペアードステートメントに値をバインドする
-	$stm->bindValue(':customer_id', $_SESSION['customer']['id'], PDO::PARAM_STR);
+	$stm->bindValue(':user_num', $_SESSION['user']['id'], PDO::PARAM_STR);
 	//SQL文を実行する
 	$stm->execute();
 	//結果の取得（連想配列で受け取る）

@@ -24,21 +24,21 @@
 
             <?php
             //ログインの確認
-            if (isset($_SESSION['customer'])) {
+            if (isset($_SESSION['user'])) {
                 //DBに接続
                 require 'db_connect.php';
 
-                $sql = "SELECT purchase_id,name,count,price,product_id
+                $sql = "SELECT user_num,date,price,book_num
 				 from purchase as P
-				 inner join purchase_detail as D 
-					 ON P.id = D.purchase_id 
-				 	 AND customer_id = :customer_id
-				 JOIN product AS PR
-				 ON PR.id = D.product_id;
+				 inner join user as D 
+					 ON P.num = D.num 
+				 	 AND user_num = :user_num
+				 JOIN book AS PR
+				 ON PR.num = P.num;
 				 ";
                 // $stm -> bindValue(':customer_id', $_SESSION['customer']['id'], PDO::PARAM_STR);
                 $stm = $pdo->prepare($sql);
-                $stm->bindValue(':customer_id', $_SESSION['customer']['id'], PDO::PARAM_INT);
+                $stm->bindValue(':user_num', $_SESSION['user'], PDO::PARAM_INT);
                 // $stm->bindValue(':id',$purchase_id,PDO::PARAM_STR);
                 // $stm -> bindValue(':purchase_id', $_SESSION['purchase_id'],PDO::PARAM_INT);
                 // $stm -> bindValue(':product_id',$_SESSION['product_id'],PDO::PARAM_INT);
@@ -48,9 +48,9 @@
                 } else {
                     $array = [];
                     foreach ($stm as $row) {
-                        $array[$row['purchase_id']][] = [
+                        $array[$row['book_num']][] = [
                             'name' => $row['name'],
-                            'product_id' => $row['product_id'],
+                            'book_num' => $row['book_num'],
                             'price' => $row['price'],
                             'subtotal' => $row['price'],
                         ];
@@ -91,11 +91,6 @@
             </div>
         </div>
     </div>
-    <footer>
-        @footer
-    </footer>
-
-
+    
 </body>
-
 </html>

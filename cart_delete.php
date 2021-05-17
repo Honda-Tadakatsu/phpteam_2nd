@@ -12,13 +12,13 @@
 
     <?php require 'menu.php'; ?>
     <?php
-    unset($_SESSION['product'][$_REQUEST['id']]);
+    unset($_SESSION['book'][$_REQUEST['num']]);
     ?>
     カートから商品を削除しました。
     <hr>
     <?php
     require 'cart_.php';
     ?>
+    
 </body>
-
 </html>
